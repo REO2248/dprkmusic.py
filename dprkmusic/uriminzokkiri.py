@@ -1,13 +1,9 @@
-from itertools import count
-from posixpath import split
 import requests
-import shutil
-import os
 from bs4 import BeautifulSoup
 
+url = "http://uriminzokkiri.com/index.php?ptype=cmusic"
+
 endpoint = "http://uriminzokkiri.com/"
-
-
 
 class Music:
     def __init__(self, no:int):
