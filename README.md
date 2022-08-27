@@ -1,14 +1,14 @@
 # dprkmusic.py
 This library gets dprk musics data from dprk sites
 
+[조선어](README_KO.md)
 [日本語](README_JP.md)
-
-### Reference
 
 ## uriminzokkiri
 
 Get musics from uriminzokkiri.com
-[Music]([README_JP.md](http://uriminzokkiri.com/index.php?ptype=cmusic))
+
+[Music](http://uriminzokkiri.com/index.php?ptype=cmusic)
 
 ### Example
 
@@ -111,7 +111,7 @@ no (str)
 view_flag (str)
 
 #### class uriminzokkiri.Search
-Search
+Search (Korean)
 
 ##### Parameters
 -skey:str = ""  : search keyword
