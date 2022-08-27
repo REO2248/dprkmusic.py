@@ -15,7 +15,7 @@ uriminzokkiri.com 에서 음악을 취득하다
 ```py
 import dprkmusic.uriminzokkiri as uriminzokkiri
 
-s = uriminzokkiri.Search("우리는 당신밖에 모른다")
+s = uriminzokkiri.search("우리는 당신밖에 모른다")
 for m in s.lists:
     music = m.music()
     print(music.title) # 음악 제목
