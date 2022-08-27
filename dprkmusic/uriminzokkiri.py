@@ -5,7 +5,15 @@ url = "http://uriminzokkiri.com/index.php?ptype=cmusic"
 
 endpoint = "http://uriminzokkiri.com/"
 
-class Music:
+langs = [
+    "kor", # 조선어 (Korean)
+    "eng", # English
+    "rus", # Русский (Russian)
+    "chn", # 中国语 (Chinese)
+    "jpn", # 日本語 (Japanese) (there are no music in japanese page)
+]
+
+class Music: # Music class from music number
     def __init__(self, no:int):
         __r = requests.post(endpoint+"index.php?ptype=cmusic&mtype=play",data={"no":str(no)+"pl"})
         __soup = BeautifulSoup(__r.json()[0]["title"], "html.parser")
@@ -78,9 +86,8 @@ class Music:
             return self.name
 
 
-
-class Search:
-    def __init__(self, skey:str, no_pagination:int=1, num_per_page:int=40, orderby:str="reg_date desc"):
+class Search: # Search from search keyword
+    def __init__(self, skey:str="", no_pagination:int=1, num_per_page:int=40, orderby:str="reg_date desc"):
         __data = {
             "no_pagination":str(no_pagination),
             "num_per_page":str(num_per_page),
@@ -89,7 +96,7 @@ class Search:
         }
         self.skey = skey
         __r = requests.post(endpoint+"index.php?ptype=cmusic&mtype=writeList",data=__data)
-        self.counts_music = __r.json()["counts_music"]
+        self.counts_music = int(__r.json()["counts_music"])
         self.lists = []
         for music in __r.json()["lists"]:
             self.lists.append(self.Music(music))
@@ -99,7 +106,7 @@ class Search:
 
     class Music:
         def __init__(self,music):
-            self.no = music["no"]
+            self.no = int(music["no"])
             self.title_html = music["title"]
             __soup = BeautifulSoup(music["title"], "html.parser")
             self.title = __soup.get_text()
@@ -117,7 +124,7 @@ class Search:
             self.categ3_name = music["categ3_name"]
             self.file_name = music["file_name"]
             self.firstpage_isview = music["firstpage_isview"]
-            self.hit = int(music["hit"])
+            self.hit = music["hit"]
             self.is_new = music["is_new"]
             self.is_view = music["is_view"]
             self.key_word = music["key_word"]
@@ -132,10 +139,72 @@ class Search:
         def music(self):
             return Music(self.no)
 
+
+class SearchOtherLang: # Search from search keyword in other language
+
+    def __init__(self, skey:str="", no_pagination:int=1, num_per_page:int=40, orderby:str="reg_date desc", lang:str="eng"):
+        __data = {
+            "no_pagination":str(no_pagination),
+            "num_per_page":str(num_per_page),
+            "skey":skey,
+            "orderby":orderby,
+            "lang":lang
+        }
+        self.skey = skey
+        __r = requests.post(endpoint+"index.php?ptype=cfomus&mtype=writeList",data=__data)
+        self.counts_music = int(__r.json()["counts_music"])
+        self.lists = []
+        for music in __r.json()["lists"]:
+            self.lists.append(self.Music(music))
+    
+    def __str__(self):
+        return self.skey
+
+    class Music:
+        def __init__(self,music):
+            self.no = int(music["no"])
+            self.title_html = music["title"]
+            __soup = BeautifulSoup(music["title"], "html.parser")
+            self.title = __soup.get_text()
+            __strong_word__ = __soup.find("span", class_='strong_word')
+            try:
+                __soup.find("span", class_='strong_word').replace_with("**"+__strong_word__.text+"**")
+                self.title_bold = __soup.get_text()
+            except:
+                self.title_bold = self.title
+            self.sub_title = music["sub_title"]
+            self.reg_date = music["reg_date"]
+            self.categ1 = int(music["categ1"])
+            self.categ2 = int(music["categ2"])
+            self.categ3 = int(music["categ3"])
+            self.categ3_name = music["categ3_name"]
+            self.file_name = music["file_name"]
+            self.firstpage_isview = music["firstpage_isview"]
+            self.hit = music["hit"]
+            self.is_new = music["is_new"]
+            self.is_view = music["is_view"]
+            self.key_word = music["key_word"]
+            self.lang_kind = music["lang_kind"]
+            self.listpage_isview = music["listpage_isview"]
+            self.old_filename = music["old_filename"]
+            self.special_no = int(music["special_no"])
+            self.summary = music["summary"]
+            self.view_order = str(music["view_order"])
+        def __str__(self):
+            return self.title
+        def music(self):
+            return Music(self.no)
+
+
+
 def get_music(no:int):
     return Music(no)
 
-def search(skey:str):
-    counts =  Search(skey, 1, 1).counts_music
-    return Search(skey, 1, counts)
+def search(skey:str, lang:str="kor"):
+    if lang == "kor":
+        counts =  Search(skey, 1, 1).counts_music # search how many music in search keyword
+        return Search(skey, 1, counts)
+    else:
+        counts =  SearchOtherLang(skey, 1, 1, lang = lang).counts_music # same as above
+        return SearchOtherLang(skey, 1, counts, lang = lang)
 
