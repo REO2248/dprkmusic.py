@@ -28,6 +28,27 @@ for m in s.lists:
 ```
 ### リファレンス
 
+#### 関数
+##### def get_music(no: int)
+Musicクラスを音楽Noで取得する
+
+引数:
+
+no: int
+
+返還: uriminzokkiri.Music
+
+##### def search(skey: str = "" , lang: str = "kor")
+search music from keyword
+
+引数:
+
+skey: str = ""
+
+lang: str = "kor"
+
+返還: uriminzokkiri.Search or uriminzokkiri.SearchOtherLang
+
 #### クラス uriminzokkiri.Music
 音楽 
 ##### 引数

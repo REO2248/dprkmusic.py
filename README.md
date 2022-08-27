@@ -27,6 +27,27 @@ for m in s.lists:
 ```
 ### Reference
 
+#### functions
+##### def get_music(no: int)
+get music class from music No
+
+Arguements:
+
+no: int
+
+Return: uriminzokkiri.Music
+
+##### def search(skey: str = "" , lang: str = "kor")
+search music from keyword
+
+Arguments:
+
+skey: str = ""
+
+lang: str = "kor"
+
+Return: uriminzokkiri.Search or uriminzokkiri.SearchOtherLang
+
 #### class uriminzokkiri.Music
 Music 
 ##### Parameters

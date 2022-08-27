@@ -27,6 +27,27 @@ for m in s.lists:
 ```
 ### 참고자료
 
+#### 함수
+##### def get_music(no: int)
+Music클라스를 음악번호로 취득한다
+
+인수:
+
+no: int
+
+반환: uriminzokkiri.Music
+
+##### def search(skey: str = "" , lang: str = "kor")
+search music from keyword
+
+인수:
+
+skey: str = ""
+
+lang: str = "kor"
+
+반환: uriminzokkiri.Search or uriminzokkiri.SearchOtherLang
+
 #### 클라스 uriminzokkiri.Music
 음악
 ##### 인수
