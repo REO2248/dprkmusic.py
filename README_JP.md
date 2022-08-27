@@ -75,41 +75,41 @@ title_html (str) : 音楽タイトルHTMLタグ付き
 
 title_bold (str) : 音楽タイトル太字タグ付き
 
-bon_send (str)
+bon_send (bool)
 
-categ1 (str)
+categ1 (int)
 
-categ2 (str)
+categ2 (int)
 
-categ3 (str)
+categ3 (int)
 
 email (str)
 
-email_isview (str)
+email_isview (bool)
 
-emoticon (str)
+emoticon (int)
 
 file_name (str)
 
-firstpage_isview (str)
+firstpage_isview (bool)
 
-hit (str)
+hit (int)
 
 ip (str)
 
-is_view (str)
+is_view (bool)
 
-listpage_isview (str)
+listpage_isview (bool)
 
-main_flag (str)
+main_flag (int)
 
 new_file_name (str)
 
-new_no (str)
+new_no (int)
 
 no (str)
 
-view_flag (str)
+view_flag (bool)
 
 #### クラス uriminzokkiri.Search
 検索 (朝鮮語)
@@ -156,25 +156,25 @@ file_name (str)
 
 firstpage_isview (str)
 
-hit (str)
+hit (int)
 
-is_new (str)
+is_new (bool)
 
-is_view (str)
+is_view (bool)
 
 key_word (str)
 
 lang_kind (str)
 
-listpage_isview (str)
+listpage_isview (bool)
 
 old_file_name (str)
 
-special_no (str)
+special_no (int)
 
 summary (str)
 
-view_order (str)
+view_order (int)
 
 
 ##### Methods
@@ -224,31 +224,31 @@ categ2 (int)
 
 categ3 (int)
 
-categ3_name (str) : カテゴリ名称
+categ3_name (str) : category name
 
 file_name (str)
 
 firstpage_isview (str)
 
-hit (str)
+hit (int)
 
-is_new (str)
+is_new (bool)
 
-is_view (str)
+is_view (bool)
 
 key_word (str)
 
 lang_kind (str)
 
-listpage_isview (str)
+listpage_isview (bool)
 
 old_file_name (str)
 
-special_no (str)
+special_no (int)
 
 summary (str)
 
-view_order (str)
+view_order (int)
 
 
 ##### Methods
