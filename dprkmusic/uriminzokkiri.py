@@ -208,7 +208,7 @@ class SearchOtherLang: # Search from search keyword in other language
 def get_music(no:int):
     return Music(no)
 
-def search(skey:str, lang:str="kor"):
+def search(skey:str="", lang:str="kor"):
     if lang == "kor":
         counts =  Search(skey, 1, 1).counts_music # search how many music in search keyword
         return Search(skey, 1, counts)
