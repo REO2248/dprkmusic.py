@@ -13,7 +13,7 @@ langs = [
     "jpn", # 日本語 (Japanese) (there are no music in japanese page)
 ]
 
-def __bool(YN):
+def _bool(YN):
     if YN == "Y":
         return True
     elif YN == "N":
@@ -50,7 +50,7 @@ class Music: # Music class from music number
     class Feel:
         def __init__(self, feel):
             self.address = feel["address"]
-            self.bon_send = __bool(feel["bon_send"])
+            self.bon_send = _bool(feel["bon_send"])
             self.categ1 = int(feel["categ1"])
             self.categ2 = int(feel["categ2"])
             self.categ3 = int(feel["categ3"])
@@ -64,15 +64,15 @@ class Music: # Music class from music number
             except:
                 self.contents_bold = self.contents
             self.email = feel["email"]
-            self.email_isview = __bool(feel["email_isview"])
+            self.email_isview = _bool(feel["email_isview"])
             self.emoticon = int(feel["emoticon"])
             self.file_name = feel["file_name"]
-            self.firstpage_isview = __bool(feel["firstpage_isview"])
+            self.firstpage_isview = _bool(feel["firstpage_isview"])
             self.hit = int(feel["hit"])
             self.ip = feel["ip"]
-            self.is_view = __bool(feel["is_view"])
+            self.is_view = _bool(feel["is_view"])
             self.job = feel["job"]
-            self.listpage_isview = __bool(feel["listpage_isview"])
+            self.listpage_isview = _bool(feel["listpage_isview"])
             self.main_flag = int(feel["main_flag"])
             self.name = feel["name"]
             self.new_file_name = feel["new_file_name"]
@@ -89,7 +89,7 @@ class Music: # Music class from music number
                 self.title_bold = __soup.get_text()
             except:
                 self.title_bold = self.title
-            self.view_flag = __bool(feel["view_flag"])
+            self.view_flag = _bool(feel["view_flag"])
         def __str__(self):
             return self.name
 
@@ -131,13 +131,13 @@ class Search: # Search from search keyword
             self.categ3 = int(music["categ3"])
             self.categ3_name = music["categ3_name"]
             self.file_name = music["file_name"]
-            self.firstpage_isview = __bool(music["firstpage_isview"])
+            self.firstpage_isview = _bool(music["firstpage_isview"])
             self.hit = int(music["hit"])
-            self.is_new = __bool(music["is_new"])
-            self.is_view = __bool(music["is_view"])
+            self.is_new = _bool(music["is_new"])
+            self.is_view = _bool(music["is_view"])
             self.key_word = music["key_word"]
             self.lang_kind = music["lang_kind"]
-            self.listpage_isview = __bool(music["listpage_isview"])
+            self.listpage_isview = _bool(music["listpage_isview"])
             self.old_filename = music["old_filename"]
             self.special_no = int(music["special_no"])
             self.summary = music["summary"]
@@ -187,13 +187,13 @@ class SearchOtherLang: # Search from search keyword in other language
             self.categ3 = int(music["categ3"])
             self.categ3_name = music["categ3_name"]
             self.file_name = music["file_name"]
-            self.firstpage_isview = __bool(music["firstpage_isview"])
+            self.firstpage_isview = _bool(music["firstpage_isview"])
             self.hit = int(music["hit"])
-            self.is_new = __bool(music["is_new"])
-            self.is_view = __bool(music["is_view"])
+            self.is_new = _bool(music["is_new"])
+            self.is_view = _bool(music["is_view"])
             self.key_word = music["key_word"]
             self.lang_kind = music["lang_kind"]
-            self.listpage_isview = __bool(music["listpage_isview"])
+            self.listpage_isview = _bool(music["listpage_isview"])
             self.old_filename = music["old_filename"]
             self.special_no = int(music["special_no"])
             self.summary = music["summary"]
